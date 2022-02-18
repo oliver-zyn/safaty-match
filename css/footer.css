@@ -28,23 +28,30 @@
 }
 
 .contact--container {
-    width: 600px;
+    width: 700px;
     height: 30vh;
 }
 
 .contact--links {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     font-size: 1rem;
     gap: 15px;
     margin-top: 30px;
 }
 
-.contact--links a {
+.contact--links div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact--links div a {
     color: var(--cor04);
 }
 
-.contact--links a:hover {
+.contact--links div a:hover {
     text-decoration: underline;
 }
 
