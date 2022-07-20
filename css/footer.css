@@ -1,5 +1,5 @@
 .contact {
-    background: var(--cor05);
+    background: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: var(--cor04);
+    color: var(--gray02);
 }
 
 .contact--title h1 {
@@ -24,7 +24,7 @@
 .contact--title span {
     width: 35px;
     height: 2px;
-    background: var(--cor04);
+    background: var(--gray02);
 }
 
 .contact--container {
@@ -48,7 +48,7 @@
 }
 
 .contact--links div a {
-    color: var(--cor04);
+    color: var(--gray02);
 }
 
 .contact--links div a:hover {

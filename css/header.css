@@ -1,92 +1,164 @@
 header {
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 15px 8% 15px;
-    z-index: 999;
-    background: #fafafdcb;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(5px);
-    animation: header-anim .8s .1s forwards ease-in-out;
-    font-size: 0.9rem;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 15px 8% 15px;
+  z-index: 10;
+  background: #fafafdcb;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: header-anim 0.8s 0.1s forwards ease-in-out;
 }
 
 .logo {
-    background: linear-gradient(45deg, var(--cor02), var(--cor03));
-    border-radius: 50%;
-    font-size: 1.2rem;
-    color: #fff;
-    padding: 11px 13px;
-    box-shadow: 4px 4px 8px #c5c5c5bd,
-    -4px -4px 8px #ffffff;
+  background: linear-gradient(45deg, var(--red), var(--pink));
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 0.69rem 0.8rem;
+  box-shadow: 4px 4px 8px #c5c5c588, -4px -4px 8px #ffffff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .link {
-    cursor: pointer;
-    margin-left: 1.5rem;
-    padding: .9rem .7rem;
-    font-weight: 600;
-    color: #575757;
-    transition: .5s ease-in-out;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    letter-spacing: 1px;
-  }
-
-.link:hover .link--linha {
-    animation: link-anim 0.5s linear forwards;
+  cursor: pointer;
+  padding: 0.9rem 0.7rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--gray02);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
 }
-  
+
 .link--linha {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #fff);
-    background: var(--cor02);
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  transition: 0.3s ease;
 }
 
+.link:hover .link--linha,
 .link.active .link--linha {
-    right: 0%;
+  right: 0%;
 }
 
-.link.active:hover .link--linha{
-    animation: none;
+.link.active:hover .link--linha {
+  animation: none;
 }
 
 .help {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background: linear-gradient(45deg, var(--cor02), var(--cor03));
-    color: #fff;
-    animation: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 5px;
+  background: linear-gradient(45deg, var(--red), var(--pink));
+  color: #fff;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+
+.help:hover {
+  opacity: 0.9;
+}
+
+.navbar--btnMobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 80px;
+    top: 70px;
+    right: 0px;
+    height: 0;
+    background-color: #fafafaea;
+    z-index: 1000;
+    transition: 0.3s;
+    visibility: hidden;
+    overflow-y: hidden;
+  }
+
+  .navbar.activeN {
+    height: 100vh;
+    visibility: visible;
+    overflow-y: auto;
+  }
+
+  .link {
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+  }
+
+  .help {
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+  }
+
+  .navbar--btnMobile {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .btnMobile--icon {
+    display: block;
+    border-top: 2px solid var(--gray02);
+    width: 20px;
+  }
+
+  .btnMobile--icon::after,
+  .btnMobile--icon::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    margin-top: 5px;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navbar--btnMobile.activeM .btnMobile--icon {
+    border-top-color: transparent;
+  }
+
+  .navbar--btnMobile.activeM .btnMobile--icon::before {
+    transform: rotate(135deg);
+  }
+
+  .navbar--btnMobile.activeM .btnMobile--icon::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  }
 }
 
 @keyframes header-anim {
-    0% {
-      opacity: 0;
-      transform: translateY(-100px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
   }
-
-@keyframes link-anim {
-    0% {
-      right: -100%;
-    }
-    50%,
-    100% {
-      right: 0%;
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
